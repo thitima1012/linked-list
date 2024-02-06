@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drag and Drop Train Carriages</title>
+    <style>
+        #toolbar {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #eee;
+        }
+        .carriage {
+            display: inline-block; /* แสดงโบกี้ในแนวนอน */
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f0f0f0;
+            cursor: move;
+        }
+        #train {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+            min-height: 100px;
+            white-space: nowrap; /* ให้โบกี้ไม่ขึ้นบรรทัดใหม่ */
+            overflow-x: auto; /* เพิ่ม scrollbar แนวนอนถ้าจำเป็น */
+        }
+        .carriage img {
+            max-width: 100%;
+            height: auto;
+            max-height: 100px; /* ปรับขนาดสูงสุดของรูปภาพ */
+        }
+        
+    </style>
+</head>
+<body>
+
+<div id="toolbar">
+    <button onclick="addCarriage()">เพิ่มโบกี้</button>
+</div>
+<div id="train">
+    <!-- โบกี้รถไฟจะถูกเพิ่มที่นี่ -->
+    <div class="carriage">
+        <img src="1.png" alt="Train Carriage 1">
+    </div>
+    <div class="carriage">
+        <img src="2.png" alt="Train Carriage 2">
+    </div>
+</div>
+
+<!-- ทำเพิ่ม -->
+<script>
+    function swapCarriages() {
+        var train = document.getElementById("train");
+        var carriages = train.getElementsByClassName("carriage");
+        
+        if (carriages.length >= 2) {
+            // เปลี่ยนตำแหน่งของโบกี้แรกกับโบกี้ที่สอง
+            train.insertBefore(carriages[1], carriages[0]);
+        }
+    }
+</script>
+
+<script src="dragdrop.js"></script>
+</body>
+</html>
+
